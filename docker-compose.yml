@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  samba:
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./cfg/samba/:/etc/samba/
+      - ./private:/home/samba/share/private/
+      - ./public:/home/samba/share/public/
+      - ./usr1:/home/samba/share/user1/
+      - ./usr2:/home/samba/share/user2/
+    ports:
+      - "139:139"
+      - "445:445"
+    container_name: mysamba
